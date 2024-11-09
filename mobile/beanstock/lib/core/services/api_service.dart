@@ -36,10 +36,10 @@ class ApiService {
     }
   }
 
-  Future<Product> update(Product product) async {
+  Future<Product> update(String id, Product product) async {
     try {
-      final response = await dio.put('/products/${product.id}',
-          data: ProductMapper.toJson(product));
+      final response =
+          await dio.put('/products/$id', data: ProductMapper.toJson(product));
 
       if (response.statusCode == 200) {
         return ProductMapper.fromJson(response.data);

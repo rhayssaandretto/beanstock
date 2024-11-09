@@ -17,19 +17,16 @@ class ProductProvider extends ChangeNotifier {
   }
 
   Future<void> create(Product product) async {
-    _products = (await _apiService.create(product)) as List<Product>;
+    _apiService.create(product);
     await fetchAll();
-    notifyListeners();
   }
 
-  Future<void> update(Product product) async {
-    _products = (await _apiService.update(product)) as List<Product>;
+  Future<void> update(String id, Product product) async {
+    _apiService.update(id, product);
     await fetchAll();
-    notifyListeners();
   }
 
   Future<void> delete(String id) async {
     await _apiService.delete(id);
-    notifyListeners();
   }
 }

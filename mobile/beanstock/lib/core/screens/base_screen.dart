@@ -2,7 +2,7 @@ import 'package:beanstock/core/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
-import 'dashboard_screen.dart';
+// import 'home_screen.dart';
 import 'product_form_screen.dart';
 import 'product_list_screen.dart';
 
@@ -23,7 +23,7 @@ class _BasePageState extends State<BasePage> {
   }
 
   final List<Widget> _pages = [
-    const HomePage(),
+    // const HomePage(),
     const ProductListPage(),
     const ProductFormPage(),
   ];
@@ -31,7 +31,7 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: lightBackgroundColor,
       bottomNavigationBar: BottomNavBar(
         onTabChange: (index) => navigateBottomBar(index),
       ),

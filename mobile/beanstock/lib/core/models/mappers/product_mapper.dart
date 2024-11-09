@@ -32,7 +32,6 @@ class ProductMapper {
     };
   }
 
-  // Converte uma lista de mapas JSON em uma lista de objetos Product
   static List<Product> toList(List<dynamic> jsonList) {
     return jsonList.map((json) => fromJson(json)).toList();
   }

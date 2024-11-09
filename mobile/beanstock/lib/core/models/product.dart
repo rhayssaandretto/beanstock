@@ -1,7 +1,7 @@
 import 'package:beanstock/core/models/store.dart';
 
 class Product {
-  final String? id;
+  String? id;
   final String name;
   final String description;
   final double price;

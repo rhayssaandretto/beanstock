@@ -1,3 +1,56 @@
 {
-    "products": []
+  "products": [
+    {
+      "id": "1df2",
+      "name": "New Product",
+      "description": "A new coffee product",
+      "price": 4.99,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAP7E4im6XaIHa41XL2xXsgOPPGdUi43M_Q&s",
+      "stores": [
+        {
+          "id": 1,
+          "name": "Miumiu's Coffee"
+        }
+      ]
+    },
+    {
+      "id": "2e3f",
+      "name": "ad",
+      "description": "ad",
+      "price": 55,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxZvGKBalMK8lrRkq9zMNV2kf593H2mpvcg&s",
+      "stores": [
+        {
+          "id": 1,
+          "name": "Miumiu's Coffee"
+        }
+      ]
+    },
+    {
+      "id": "adee",
+      "name": "fghfghfg",
+      "description": "fghfghfgh",
+      "price": 57,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/128/2696/2696198.png",
+      "stores": [
+        {
+          "id": 1,
+          "name": "Miumiu's Coffee"
+        }
+      ]
+    },
+    {
+      "id": "04e1",
+      "name": "as",
+      "description": "asdf",
+      "price": 888,
+      "imageUrl": "dfsd",
+      "stores": [
+        {
+          "id": 2,
+          "name": "Meow n Coffee"
+        }
+      ]
+    }
+  ]
 }

@@ -7,8 +7,14 @@ import 'core/providers/product_provider.dart';
 import 'core/providers/store_provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => ProductProvider(ApiService())),
-    ChangeNotifierProvider(create: (_) => StoreProvider()),
-  ], child: const MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      Provider(create: (_) => ApiService()),
+      ChangeNotifierProvider(
+          create: (context) =>
+              ProductProvider(Provider.of<ApiService>(context, listen: false))),
+      ChangeNotifierProvider(create: (_) => StoreProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
