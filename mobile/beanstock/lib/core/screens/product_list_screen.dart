@@ -37,7 +37,19 @@ class _ProductListPageState extends State<ProductListPage> {
         children: [
           Expanded(
             child: products.isEmpty
-                ? const Center(child: CircularProgressIndicator())
+                ? const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0), // Adiciona margem lateral
+                      child: Text(
+                        "Está tudo muito vazio por aqui... Adicione um produto! ƪ(˘⌣˘)ʃ",
+                        textAlign: TextAlign.center, // Centraliza o texto
+                        style: TextStyle(
+                            fontSize:
+                                16.0), // Personalize o tamanho da fonte se necessário
+                      ),
+                    ),
+                  )
                 : ListView.builder(
                     itemCount: products.length,
                     itemBuilder: (context, index) {

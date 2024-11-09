@@ -25,6 +25,7 @@ void main() {
         () async {
       // Arrange
       final product = Product(
+          id: '1',
           name: 'Café',
           description: 'Café forte',
           price: 5.0,

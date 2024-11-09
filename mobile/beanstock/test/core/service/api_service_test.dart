@@ -67,6 +67,7 @@ void main() {
         () async {
       // Arrange
       final product = Product(
+          id: '1',
           name: 'Café',
           description: 'Café forte',
           price: 5.0,
@@ -123,7 +124,8 @@ void main() {
               requestOptions: RequestOptions(path: '/products/1')));
 
       // Act
-      final result = await apiService.update(product);
+      final result = await apiService.update('1', product);
+      expect(result.id, product.id);
       expect(result.name, product.name);
       expect(result.description, product.description);
       expect(result.price, product.price);

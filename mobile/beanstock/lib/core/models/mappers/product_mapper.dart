@@ -4,6 +4,8 @@ import '../store.dart';
 class ProductMapper {
   static Product fromJson(Map<String, dynamic> json) {
     return Product(
+      id: json['id'], // Inclua o mapeamento do id aqui
+
       name: json['name'],
       description: json['description'],
       price: json['price'],
@@ -19,6 +21,7 @@ class ProductMapper {
 
   static Map<String, dynamic> toJson(Product product) {
     return {
+      'id': product.id,
       'name': product.name,
       'description': product.description,
       'price': product.price,
