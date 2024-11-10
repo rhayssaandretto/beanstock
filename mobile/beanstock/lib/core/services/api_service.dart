@@ -42,8 +42,6 @@ class ApiService {
           await dio.put('/products/$id', data: ProductMapper.toJson(product));
 
       if (response.statusCode == 200) {
-        print('Produto atualizado: ${response.data}');
-
         return ProductMapper.fromJson(response.data);
       } else {
         throw Exception(
@@ -56,13 +54,7 @@ class ApiService {
 
   Future<void> delete(String id) async {
     try {
-      final response = await dio.delete('/products/$id');
-      
-
-      // if (response.statusCode != 200) {
-      //   throw Exception(
-      //       'Falha ao deletar produto. Código: ${response.statusCode}');
-      // }
+      await dio.delete('/products/$id');
     } on DioException catch (e) {
       throw Exception('Erro ao fazer a requisição: ${e.message}');
     }

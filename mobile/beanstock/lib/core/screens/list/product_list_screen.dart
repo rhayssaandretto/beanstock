@@ -1,10 +1,11 @@
+import 'package:beanstock/core/constants.dart';
 import 'package:beanstock/core/providers/product_provider.dart';
-import 'package:beanstock/core/screens/product_form_screen.dart';
+import 'package:beanstock/core/screens/forms/product_form_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/store.dart';
+import '../../models/store.dart';
 
 class ProductListPage extends StatefulWidget {
   const ProductListPage({super.key});
@@ -15,12 +16,11 @@ class ProductListPage extends StatefulWidget {
 
 class _ProductListPageState extends State<ProductListPage> {
   Store? selectedStore;
-  List<Store> stores = []; // Initialize with your list of stores
+  List<Store> stores = [];
 
   @override
   void initState() {
     super.initState();
-    // Carregar os produtos ao iniciar a página
     Provider.of<ProductProvider>(context, listen: false).fetchAll();
   }
 
@@ -31,22 +31,21 @@ class _ProductListPageState extends State<ProductListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Product List"),
+        backgroundColor: Colors.transparent,
+        title: Text("Product List", style: TextStyle(color: primaryBrownColor)),
       ),
+      backgroundColor: lightBackgroundColor,
       body: Column(
         children: [
           Expanded(
             child: products.isEmpty
                 ? const Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 16.0), // Adiciona margem lateral
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         "Está tudo muito vazio por aqui... Adicione um produto! ƪ(˘⌣˘)ʃ",
-                        textAlign: TextAlign.center, // Centraliza o texto
-                        style: TextStyle(
-                            fontSize:
-                                16.0), // Personalize o tamanho da fonte se necessário
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16.0),
                       ),
                     ),
                   )
@@ -66,29 +65,39 @@ class _ProductListPageState extends State<ProductListPage> {
                             errorWidget: (BuildContext context, String url,
                                 dynamic error) {
                               return const Center(
-                                  child: Icon(Icons
-                                      .coffee_outlined)); // Exibe erro caso a imagem não seja carregada
+                                  child: Icon(Icons.coffee_outlined));
                             },
                           ),
                         ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () async {
-                            if (product.id != null) {
-                              await productProvider.delete(product.id!);
-                            }
-                          },
-                        ),
-                        onTap: () {
-                          // Navegar para a tela de edição de produto
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductFormPage(product: product),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              color: activeYellowColor,
+                              icon: const Icon(Icons.edit),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProductFormPage(product: product),
+                                  ),
+                                );
+                              },
                             ),
-                          );
-                        },
+                            IconButton(
+                              color: activeYellowColor,
+                              icon: const Icon(Icons.delete),
+                              onPressed: () async {
+                                if (product.id != null) {
+                                  await productProvider.delete(product.id!);
+                                  _showSnackBar(
+                                      context, "Produto deletado com sucesso!");
+                                }
+                              },
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
@@ -97,4 +106,13 @@ class _ProductListPageState extends State<ProductListPage> {
       ),
     );
   }
+}
+
+void _showSnackBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 2),
+    ),
+  );
 }

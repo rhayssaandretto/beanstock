@@ -1,5 +1,5 @@
 // import 'package:beanstock/core/screens/base_screen.dart';
-import 'package:beanstock/core/screens/home_screen.dart';
+import 'package:beanstock/core/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

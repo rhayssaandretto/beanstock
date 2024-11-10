@@ -9,5 +9,3 @@ var tabBackgroundYellowColor =
     const Color(0xFFE1DB9D); // #E1DB9D (Amarelo claro para fundo da aba)
 var activeTabBorderYellowColor =
     const Color(0xFFFFD9AC); // #FFD9AC (Borda ativa da aba)
-var pastelPinkColor =
-    const Color.fromARGB(255, 246, 200, 213); // #F6C8D5 (Rosa pastel)
